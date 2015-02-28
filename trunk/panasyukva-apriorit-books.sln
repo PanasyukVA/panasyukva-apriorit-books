@@ -1,27 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Web
-VisualStudioVersion = 12.0.31101.0
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Books", "http://localhost/Books", "{55E53B7C-1948-4766-BD83-D5D8F17FB00B}"
+# Visual Studio Express 2012 for Web
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "panasyukva-apriorit-books", "..\panasyukva-apriorit-books", "{DD600DDD-690B-4FDF-830E-0506FCCF508E}"
 	ProjectSection(WebsiteProperties) = preProject
-		UseIISExpress = "false"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/Books"
-		Debug.AspNetCompiler.PhysicalPath = "..\Books\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Books\"
+		Debug.AspNetCompiler.VirtualPath = "/panasyukva-apriorit-books"
+		Debug.AspNetCompiler.PhysicalPath = "E:\ASP classic\Projects\panasyukva-apriorit-books\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\panasyukva-apriorit-books\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/Books"
-		Release.AspNetCompiler.PhysicalPath = "..\Books\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Books\"
+		Release.AspNetCompiler.VirtualPath = "/panasyukva-apriorit-books"
+		Release.AspNetCompiler.PhysicalPath = "E:\ASP classic\Projects\panasyukva-apriorit-books\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\panasyukva-apriorit-books\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "..\Books\"
+		VWDPort = "53903"
 	EndProjectSection
 EndProject
 Global
@@ -29,8 +26,8 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{55E53B7C-1948-4766-BD83-D5D8F17FB00B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{55E53B7C-1948-4766-BD83-D5D8F17FB00B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD600DDD-690B-4FDF-830E-0506FCCF508E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD600DDD-690B-4FDF-830E-0506FCCF508E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
