@@ -69,6 +69,7 @@
 
                             Set spBookGetList = nothing 
                             Set rsBookGetList = nothing
+                            Set connDB = nothing
                         End If
                         %>" />
                 </td>
