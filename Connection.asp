@@ -1,4 +1,4 @@
-<!--#include virtual = "/Books/Constant.asp" -->
+<!--#include file = "Constant.asp" -->
 
 <%
 dim connDB

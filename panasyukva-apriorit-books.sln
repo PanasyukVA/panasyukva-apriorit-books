@@ -1,24 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Web
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "panasyukva-apriorit-books", "..\panasyukva-apriorit-books", "{DD600DDD-690B-4FDF-830E-0506FCCF508E}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "panasyukva-apriorit-books", "http://localhost:53903", "{DD600DDD-690B-4FDF-830E-0506FCCF508E}"
 	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		Debug.AspNetCompiler.VirtualPath = "/panasyukva-apriorit-books"
-		Debug.AspNetCompiler.PhysicalPath = "E:\ASP classic\Projects\panasyukva-apriorit-books\"
+		Debug.AspNetCompiler.PhysicalPath = "..\panasyukva-apriorit-books\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\panasyukva-apriorit-books\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/panasyukva-apriorit-books"
-		Release.AspNetCompiler.PhysicalPath = "E:\ASP classic\Projects\panasyukva-apriorit-books\"
+		Release.AspNetCompiler.PhysicalPath = "..\panasyukva-apriorit-books\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\panasyukva-apriorit-books\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "53903"
+		SlnRelativePath = "..\panasyukva-apriorit-books\"
 	EndProjectSection
 EndProject
 Global

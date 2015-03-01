@@ -1,25 +1,30 @@
-<!--#include virtual="/Books/Connection.asp" -->
+<!--#include file="Connection.asp" -->
 
 <%
-    BookID = Request("ID")
+    Dim BookID, BookName, Authors
 
-    If Request.Form("BookName") <> "" Then
-        Dim  spBookEdit
-                     
+    If Len(Request("Name")) <> 0 Then
+        BookID = CInt(Request("ID"))
+        BookName = CStr(Request("Name"))
+    ElseIf Len(Request.Form("BookName")) <> 0 Then
+        If Len(Request.Form("BookID")) <> 0 Then
+            BookID = CInt(Request.Form("BookID"))
+        End If
+        BookName = CStr(Request.Form("BookName"))
+        Authors = CStr(Request.Form("BookAuthors")) & ","
+    End If
+    
+    If Len(Request.Form("BookName")) <> 0 Then
         Set spBookEdit = Server.CreateObject("ADODB.command")
         spBookEdit.ActiveConnection = connDB
-        spBookEdit.CommandType = 4
+        spBookEdit.CommandType = adCmdStoredProc
         spBookEdit.CommandText = "spBookEdit"
-        If Request.Form("BookID") <> "" Then
-            spBookEdit.Parameters.Append spBookEdit.CreateParameter("@ID", 3, 3, , Request.Form("BookID"))
-        Else
-            spBookEdit.Parameters.Append spBookEdit.CreateParameter("@ID", 3, 3, , nothing)
-        End If
-        spBookEdit.Parameters.Append spBookEdit.CreateParameter("@Name", 200, 1, 150, Request.Form("BookName"))
-        spBookEdit.Parameters.Append spBookEdit.CreateParameter("@Authors", 200, 1, 1024, Request.Form("BookAuthors") & ",")
+        spBookEdit.Parameters.Append spBookEdit.CreateParameter("@ID", adInteger, adParamInputOutput, , BookID)
+        spBookEdit.Parameters.Append spBookEdit.CreateParameter("@Name", adVarChar, adParamInput, 150, BookName)
+        spBookEdit.Parameters.Append spBookEdit.CreateParameter("@Authors", adVarChar, adParamInput, 1024, Authors)
         spBookEdit.Execute
 
-        BookID = spBookEdit.Parameters("@ID").Value
+        BookID = CInt(spBookEdit.Parameters("@ID").Value)
         Set spBookEdit = nothing 
     End If
  %>
@@ -28,45 +33,42 @@
 <html>
 <head>
 	<title>Book</title>
+    <link href="Style/Books.css" rel="stylesheet" />
 </head>
 <body>
     <form method="post" action="Book.asp">
-        <table style="background-color:#b0c4de;width:30%">
+        <table class="BookTable">
             <tr>
-                <td style="width:10%">
+                <td>
                     <label for="BookName">Name: </label>
                 </td>
-                <td style="text-align:left;width:90%">
-                    <input name="BookName" type="text" style="width:99%" value="<%
-                        Response.Write Request("Name") 
-                        Response.Write Request.Form("BookName")
-                        %>" required />
+                <td>
+                    <input name="BookName" type="text" value="<%=BookName%>" required placeholder="Please, enter the book's name" />
                     <input name="BookID" type="hidden" value="<%=BookID%>" />
                 </td>
             </tr>
             <tr>
-                <td style="width:10%">
+                <td>
                     <label for="BookAuthors">Authors: </label>
                 </td>
-                <td style="text-align:left;width:90%">
-                    <select name="BookAuthors" style="width:100%;" multiple required>
+                <td>
+                    <select name="BookAuthors" multiple required title="Choose authors of the book">
                         <%
                         Dim  spAuthorGetList, rsAuthorList
                      
                         Set spAuthorGetList = Server.CreateObject("ADODB.command")
                         spAuthorGetList.ActiveConnection = connDB
-                        spAuthorGetList.CommandType = 4
+                        spAuthorGetList.CommandType = adCmdStoredProc
                         spAuthorGetList.CommandText = "spAuthorGetList"
-                        spAuthorGetList.Parameters.Append spAuthorGetList.CreateParameter("@BookID", 3, 1, ,BookID)    
+                        spAuthorGetList.Parameters.Append spAuthorGetList.CreateParameter("@BookID", adInteger, adParamInput, ,BookID)    
 
                         Set rsAuthorList = spAuthorGetList.Execute
-
                         do until rsAuthorList.EOF
+                            Response.Write "<option"
                             If rsAuthorList.Fields.Item("WroteBook") = 1 Then
-                                Response.Write "<option id='" & rsAuthorList.Fields.Item("ID") & "' selected>" & rsAuthorList.Fields.Item("Name") & "</option>, "
-                            Else
-                                Response.Write "<option id='" & rsAuthorList.Fields.Item("ID") & "'>" & rsAuthorList.Fields.Item("Name") & "</option>, "
+                                Response.Write " selected" 
                             End If
+                            Response.Write ">" & rsAuthorList.Fields.Item("Name") & "</option>"
                             
                             rsAuthorList.MoveNext
                         loop
@@ -80,8 +82,8 @@
         </table>
         <br />
         <div>
-            <input type="submit" value="Add/Edit" /><br />
-            <a href="Books.asp">Books</a>
+            <button title="Click to edit/add the book" type="submit">Add/Edit</button><br />
+            <a href="Books.asp" title="Click to return to the Books page">Books</a>
         </div>
     </form>
 </body>
