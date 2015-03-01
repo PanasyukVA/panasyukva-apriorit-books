@@ -54,27 +54,28 @@
                 <td>
                     <select name="BookAuthors" multiple required title="Choose authors of the book">
                         <%
-                        Dim  spAuthorGetList, rsAuthorList
+                            Dim  spAuthorGetList, rsAuthorList
                      
-                        Set spAuthorGetList = Server.CreateObject("ADODB.command")
-                        spAuthorGetList.ActiveConnection = connDB
-                        spAuthorGetList.CommandType = adCmdStoredProc
-                        spAuthorGetList.CommandText = "spAuthorGetList"
-                        spAuthorGetList.Parameters.Append spAuthorGetList.CreateParameter("@BookID", adInteger, adParamInput, ,BookID)    
+                            Set spAuthorGetList = Server.CreateObject("ADODB.command")
+                            spAuthorGetList.ActiveConnection = connDB
+                            spAuthorGetList.CommandType = adCmdStoredProc
+                            spAuthorGetList.CommandText = "spAuthorGetList"
+                            spAuthorGetList.Parameters.Append spAuthorGetList.CreateParameter("@BookID", adInteger, adParamInput, ,BookID)    
 
-                        Set rsAuthorList = spAuthorGetList.Execute
-                        do until rsAuthorList.EOF
-                            Response.Write "<option"
-                            If rsAuthorList.Fields.Item("WroteBook") = 1 Then
-                                Response.Write " selected" 
-                            End If
-                            Response.Write ">" & rsAuthorList.Fields.Item("Name") & "</option>"
+                            Set rsAuthorList = spAuthorGetList.Execute
+                            do until rsAuthorList.EOF
+                                Response.Write "<option"
+                                If rsAuthorList.Fields.Item("WroteBook") = 1 Then
+                                    Response.Write " selected" 
+                                End If
+                                Response.Write ">" & rsAuthorList.Fields.Item("Name") & "</option>"
                             
-                            rsAuthorList.MoveNext
-                        loop
+                                rsAuthorList.MoveNext
+                            loop
 
-                        Set spAuthorGetList = nothing 
-                        Set rsAuthorList = nothing
+                            Set spAuthorGetList = nothing 
+                            Set rsAuthorList = nothing
+                            Set connDB = nothing
                         %>
                     </select>
                 </td>

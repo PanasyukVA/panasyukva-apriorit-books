@@ -63,8 +63,9 @@
                         loop
                         
                         rsBookList.close
-                        set spBookGetList = nothing
-                        set rsBookList = nothing
+                        Set spBookGetList = nothing
+                        Set rsBookList = nothing
+                        Set connDB = nothing
 		            %>
                 </table>
                 
