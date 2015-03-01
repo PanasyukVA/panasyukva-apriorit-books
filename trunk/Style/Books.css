@@ -1,0 +1,59 @@
+﻿/* --- Common --- */
+
+body {
+    font-family: Calibri;
+    font-size: 14pt;
+}
+
+input {
+    width: 99%;
+}
+
+select {
+    width: 100%;
+}
+
+/* --- Specific --- */
+
+/* The Books page  */
+.BooksTable {
+    border-width: 1pt;
+    width: 100%;
+}
+
+.BooksTable tr:first-child {
+    background-color:#b0c4de;
+}
+
+.BooksTable tr {
+    background-color:#f0f0f0;
+}
+
+/* The Author page  */
+.AuthorTable{
+    background-color: #b0c4de;
+    width: 30%;
+}
+
+.AuthorTable tr td:first-child {
+    width: 30%;
+}
+
+.AuthorTable tr td:nth-child(2){
+    text-align:left;
+}
+
+/* The Book page  */
+
+.BookTable {
+    background-color: #b0c4de;
+    width: 40%;
+}
+
+.BookTable tr td:first-child {
+    width: 15%;
+}
+
+.BookTable tr td:nth-child(2){
+    text-align:left;
+}
